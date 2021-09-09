@@ -14,25 +14,9 @@ class WeatherList extends React.Component{
     }
     renderCity() {
         const data = this.props.coords.coords.data;
-        const getBack = () => {
-            const id = data.current.weather[0].id;
-            if(300 > id && id > 200) {
-                return "background_thunderstorm"
-            } else if(400 > id && id > 300) {
-                return "background_drizzle"
-            } else if(600 > id && id > 500) {
-                return 'background_rain'
-            } else if(700 > id && id > 600) {
-                return "background_snow"
-            } else if(id === 800) {
-                return "background_clear"
-            } else {
-                return "background_clouds"
-            }
-        }
         if(data){
             return(
-                <div className={`city background ${getBack()}`}>
+                <div className={`city background`}>
                     <h2>
                     {data.timezone}
                     </h2>
@@ -56,8 +40,10 @@ class WeatherList extends React.Component{
     render() {
         return(
             <div>
-                {this.renderCity()}
-                    <RenderDetails data={this.props.coords.coords.data.current} />
+                <div className='weather weather_top'>
+                    {this.renderCity()}
+                    <RenderDetails data={this.props.coords.coords.data} />
+                </div>
                 <div className='weather weather_hour'>
                     <RenderHourForecast data={this.props.coords.coords.data} />
                 </div>
@@ -72,5 +58,21 @@ class WeatherList extends React.Component{
 const mapStateToProps = (state) => {
     return { coords: state }
 }
+/*const getBack = () => {
+            const id = data.current.weather[0].id;
+            if(300 > id && id > 200) {
+                return "background_thunderstorm"
+            } else if(400 > id && id > 300) {
+                return "background_drizzle"
+            } else if(600 > id && id > 500) {
+                return 'background_rain'
+            } else if(700 > id && id > 600) {
+                return "background_snow"
+            } else if(id === 800) {
+                return "background_clear"
+            } else {
+                return "background_clouds"
+            }
+        } */
 
 export default connect(mapStateToProps, { getCoords })(WeatherList)

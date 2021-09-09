@@ -3,41 +3,32 @@ import React from 'react';
 const RenderDetails = ({ data }) => {
 
     const windDirection = (data) => {
-        const d = data.wind_deg;
-        const directions = ['N','N/NE','E/NE','E','E/SE','SE','S/SE','S',
-                            'S/SW','SW','W/SW','W','W/NW','NW','N/NW']
-
-        if(d >= 350 || d === 10){
-            return directions[0]
-        } else if(d === 20 || d ===30){
-            return directions[1]
-        } else if(d === 40 || d === 50){
-            return directions[2]
-        } else if(d === 60 || d === 70){
-            return directions[3]
-        } else if(d >= 80 && d <= 100) {
-            return directions[4]
-        } else if(d === 100 || d === 110){
-            return directions[5]
-        } else {
-            return directions[6]
-        }
+        const d = Math.round(data.wind_deg / 10) - 1;
+        console.log(d)
+        const directions = ['N','N/NE','N/NE','NE','NE','E/NE','E/NE','E','E','E','E/SE','E/SE','SE','SE',
+                            'S/SE','S/SE','S','S','S','S/SW','S/SW','SW','SW','W/SW',
+                            'W/SW','W','W','W','W/NW','W/NW','NW','NW','N/NW','N/NW','N','N'];
+        return directions[d]
     }
 
-    return (
-        <div>
+    if(data){
+        return (
             <div>
-                Pressure: {data.pressure}hP
-                <br />
-                Humidity: {data.humidity}%
+            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                Pressure: {data.current.pressure}hP
+                &nbsp;&nbsp;&nbsp;
+                Humidity: {data.current.humidity}%
                 <div>
-                    Wind:
-                        Speed: {data.wind_speed}km/h 
-                        Direction: {windDirection(data)}
+                       Wind Speed: {data.current.wind_speed}km/h 
+                        &nbsp;
+                       Wind Direction: {windDirection(data.current)}
                 </div>
             </div>
         </div>
     )
+} else {
+    return <div></div>
+}
 }
 
 export default RenderDetails
