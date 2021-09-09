@@ -58,21 +58,5 @@ class WeatherList extends React.Component{
 const mapStateToProps = (state) => {
     return { coords: state }
 }
-/*const getBack = () => {
-            const id = data.current.weather[0].id;
-            if(300 > id && id > 200) {
-                return "background_thunderstorm"
-            } else if(400 > id && id > 300) {
-                return "background_drizzle"
-            } else if(600 > id && id > 500) {
-                return 'background_rain'
-            } else if(700 > id && id > 600) {
-                return "background_snow"
-            } else if(id === 800) {
-                return "background_clear"
-            } else {
-                return "background_clouds"
-            }
-        } */
 
 export default connect(mapStateToProps, { getCoords })(WeatherList)

@@ -12,9 +12,9 @@ const RenderDailyForecast = ({ data  }) => {
             const rainChance = (day) => {
                 const chance = day.pop * 100;    
                 if(chance > 40){
-                    return <div>{chance}%</div>
+                    return <div className='chance'>{chance}%</div>
                 } else {
-                    return <div></div>
+                    return <div className='chance'></div>
                 }
             }
             return(
