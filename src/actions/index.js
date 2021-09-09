@@ -5,7 +5,7 @@ export const getCoords = () => {
         const geolocation = navigator.geolocation;
         geolocation.getCurrentPosition((position) => [
             axios.get(`
-            https://api.openweathermap.org/data/2.5/weather`, {
+            https://api.openweathermap.org/data/2.5/onecall`, {
                 params: {
                     appid: "0f37ce848fdf66d48b73f051d4ca6ad0",
                     lat: position.coords.latitude,

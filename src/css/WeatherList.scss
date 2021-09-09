@@ -1,0 +1,95 @@
+.city {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    justify-content: center;
+    margin-bottom: 4rem;
+    &_tempNow{
+        display: grid;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+.weather{
+    display: flex;
+    justify-content: center;
+
+    @media screen and (max-width: 1000px) {
+        justify-content: start;
+    }
+
+    &_hour{
+        display: flex;
+        overflow: scroll;
+        overflow-y: hidden;
+    }
+
+    &_daily{ 
+        display: flex;
+        flex-direction: column;
+        margin-top: 1rem;
+        margin: auto;
+
+        max-width: 70rem;
+        @media screen and(max-width: 480px) {   
+            margin-right: 2rem;
+        }
+        
+    }
+}
+
+@media screen and (max-width: 480px){
+    .hour_weather{
+        border: 1px solid #54b4dac7;
+        border-bottom: none;
+        
+        &:last-child {
+            border-bottom: 1px solid #54b4dac7;
+        }
+    }
+}
+.daily_weather{
+    display: flex;
+    justify-content: space-between;
+
+    h3{
+        width: 8rem;
+    }
+    
+    &__temp{
+        width: 10rem;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .temp_night{
+        color: rgba(0, 0, 0, 0.438);
+    }
+}
+
+.item{
+    margin-right: 2rem;
+    text-align: center;
+    &:last-child {
+        padding-right: 0;
+    }
+    &_data{
+        display: flex;
+        flex-direction: column;
+
+        img{
+            height: 4rem;
+            width: 4rem;
+        }
+    }
+}
+
+::-webkit-scrollbar {
+    width: 0; 
+    height: .5rem;
+    background: transparent; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #54b4dac7;
+}

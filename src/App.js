@@ -1,5 +1,7 @@
 import React from 'react'
-import WeatherList from './components/WeatherList'
+import WeatherList from './components/weather/WeatherList'
+
+import './css/App.scss';
 
 const App = () => {
 
