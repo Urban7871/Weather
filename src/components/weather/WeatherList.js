@@ -7,9 +7,11 @@ import RenderHourForecast from './RenderHourForecast';
 
 import '../../css/WeatherList.scss'
 import RenderDetails from './RenderDeatils';
+import { useParams } from 'react-router';
 
 class WeatherList extends React.Component{
     componentDidMount() {
+        const id = useParams;
         this.props.getCoords();
     }
     renderCity() {

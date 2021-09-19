@@ -18,3 +18,16 @@ export const getCoords = () => {
         ])
     }
 }
+export const getSearch = ( city ) => {
+    return dispatch => {
+        axios.get(`
+            https://pro.openweathermap.org/data/2.5/forecast/hourly`, {
+                params: {
+                    q: city,
+                    appid: "50453c06daddb64bfb7c9056d0f6540c"
+                }
+            }).then(response => {
+                dispatch({ type: 'GET_SEARCH', payload: response})
+            })
+    }
+}
